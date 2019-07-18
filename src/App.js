@@ -1,9 +1,10 @@
 import React from "react";
+import OnlineShoppingPage from "./OnlineShoppingPage";
 import "./App.css";
 function App() {
   return (
     <div>
-      <p>jagadish</p>
+      <OnlineShoppingPage />
     </div>
   );
 }

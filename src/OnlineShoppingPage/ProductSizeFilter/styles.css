@@ -1,0 +1,8 @@
+.sizeFilter {
+  width: 280px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.filterSide {
+  margin-left: 20px;
+}

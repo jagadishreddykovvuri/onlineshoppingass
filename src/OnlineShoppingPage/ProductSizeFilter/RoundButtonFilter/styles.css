@@ -1,0 +1,18 @@
+.round {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background-color: #e8eae6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.round:hover {
+  border-style: solid;
+  border-width: thin;
+}
+.clicked {
+  color: white;
+  background-color: black;
+}
