@@ -30,3 +30,6 @@
 .add-to-cart:hover {
   background-color: orange;
 }
+.price {
+  text-align: center;
+}
