@@ -5,7 +5,7 @@ import "./styles.css";
 class OnlineShoppingPage extends Component {
   render() {
     return (
-      <div>
+      <div className="shopping-background">
         <ProductSizeFilter />
         <ProductShowCase />
       </div>
