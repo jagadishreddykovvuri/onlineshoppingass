@@ -1,3 +1,5 @@
 import ProductStore from "../store/ProductStore";
+import CartStore from "../store/CartStore";
 const productStore = new ProductStore();
-export default productStore;
+const cartStore = new CartStore();
+export { productStore as default, cartStore };

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import { cartStore } from "../../../Instance";
 import "./styles.css";
 class Product extends Component {
   onFreeShipping = value => {
     if (value) {
       return <div class="free-shipping">Free Shipping</div>;
     }
+  };
+  onAddtoCart = () => {
+    console.log(this.props.product.id);
+    cartStore.onAddProductToCart(this.props.product.id);
   };
   render() {
     const { product } = this.props;
@@ -30,7 +35,9 @@ class Product extends Component {
             or {product.installments} x {product.currencyFormat}
             {Number((product.price / product.installments).toFixed(2))}
           </p>
-          <button className="add-to-cart">Add To Cart</button>
+          <button className="add-to-cart" onClick={this.onAddtoCart}>
+            Add To Cart
+          </button>
         </div>
       </>
     );

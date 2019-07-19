@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import CartProducts from "./CartProducts";
+import CartProduct from "./CartProducts";
 import "./styles.css";
 class CartItem extends Component {
   render() {
     return (
       <>
-        <CartProducts />
+        <div className="cart-products">
+          <CartProduct />
+        </div>
       </>
     );
   }

@@ -5,6 +5,9 @@ class Cart extends Component {
   render() {
     return (
       <>
+        <div className="cart-header">
+          <img className="cart-image-size" src="/assets/cart.png" />
+        </div>
         <CartItems />
       </>
     );

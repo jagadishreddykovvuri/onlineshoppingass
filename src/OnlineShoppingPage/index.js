@@ -1,13 +1,42 @@
 import React, { Component } from "react";
 import ProductShowCase from "./ProductShowCase";
 import ProductSizeFilter from "./ProductSizeFilter";
+import cart from "./Cart";
 import "./styles.css";
+import Cart from "./Cart";
 class OnlineShoppingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCartOpen: false
+    };
+  }
+  onOpenCart = () => {
+    this.setState({
+      isCartOpen: !this.state.isCartOpen
+    });
+  };
   render() {
+    let open = "",
+      image = "/assets/cart.png";
+    if (this.state.isCartOpen) {
+      open = "opener";
+      image = "/assets/error.png";
+    }
     return (
-      <div className="shopping-background">
-        <ProductSizeFilter />
-        <ProductShowCase />
+      <div className="container">
+        <div className="shopping-background">
+          <ProductSizeFilter />
+          <ProductShowCase />
+        </div>
+        <div className="cart">
+          <div className="cart-clicker" onClick={this.onOpenCart}>
+            <img className="cartimage" src={image} />
+          </div>
+          <div className={"cart-page " + open}>
+            <Cart />
+          </div>
+        </div>
       </div>
     );
   }

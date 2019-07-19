@@ -1,3 +1,46 @@
 .shopping-background {
   display: flex;
+  margin-top: 60px;
+  position: absolute;
+}
+.cart-clicker {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+.cartimage {
+  width: 40px;
+  height: 40px;
+}
+.container {
+  width: 1000px;
+  height: 1000px;
+  position: relative;
+}
+.black {
+  width: 400px;
+  height: 100%;
+}
+.cart {
+  height: 100%;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.cart-page {
+  width: 600px;
+  height: 100%;
+  background-color: black;
+  overflow: hidden;
+  -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
+  transition: width 0.5s;
+}
+.opener {
+  width: 600px;
 }
