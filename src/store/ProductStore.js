@@ -7,7 +7,6 @@ class ProductStore {
     } else {
       this.sizeFilter.remove(filterValue);
     }
-    console.log(this.sizeFilter);
   }
 }
 export default ProductStore;

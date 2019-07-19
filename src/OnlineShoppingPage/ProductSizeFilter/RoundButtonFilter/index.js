@@ -5,7 +5,6 @@ import { observer } from "mobx-react";
 @observer
 class RoundButtonFilter extends Component {
   HandleClick = () => {
-    console.log(this.props.size);
     productStore.onAddorRemoveFilter(this.props.size);
   };
   onSelectedorNot = () => {
