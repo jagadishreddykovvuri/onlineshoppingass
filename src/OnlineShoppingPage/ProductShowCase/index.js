@@ -32,6 +32,7 @@ class ProductShowCase extends Component {
               </select>
             </div>
           </div>
+
           <div className="product-show">
             {products.map(product => (
               <Product product={product} />

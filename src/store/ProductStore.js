@@ -18,8 +18,20 @@ class ProductStore {
   }
   @computed get filteredProducts() {
     let products = [];
-    for (let i = 0; i < this.products.length; i++) {
-      products.push(this.products[i]);
+    if (this.sizeFilter.length > 0) {
+      for (let i = 0; i < this.products.length; i++) {
+        if (
+          this.sizeFilter.filter(size =>
+            this.products[i].availableSizes.includes(size)
+          ).length > 0
+        ) {
+          products.push(this.products[i]);
+        }
+      }
+    } else {
+      for (let i = 0; i < this.products.length; i++) {
+        products.push(this.products[i]);
+      }
     }
 
     if (this.orderByValue === orderByPrice[1]) {
