@@ -2,3 +2,21 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
+.orderby {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+.order-by-filter {
+  width: 130px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: white;
+}
+.gap {
+  margin-right: 10px;
+}
+.header-filter {
+  display: flex;
+  justify-content: space-between;
+}

@@ -28,7 +28,7 @@ class Product extends Component {
           </h4>
           <p className="installment">
             or {product.installments} x {product.currencyFormat}
-            {Number((product.price / 9).toFixed(2))}
+            {Number((product.price / product.installments).toFixed(2))}
           </p>
           <button className="add-to-cart">Add To Cart</button>
         </div>
