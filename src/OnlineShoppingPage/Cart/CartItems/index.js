@@ -6,11 +6,11 @@ import { observer } from "mobx-react";
 @observer
 class CartItem extends Component {
   cartProducts = () => {
-    if (cartStore.cartProducts.length > 0) {
-      return cartStore.cartProducts.map(cartItem => (
-        <CartProduct cartItem={cartItem} />
-      ));
-    }
+    let cart = [];
+    cartStore.cartProducts.forEach((quantity, id, cartItem) =>
+      cart.push(<CartProduct cartItem={cartStore.cartProducts} id={id} />)
+    );
+    return cart;
   };
   render() {
     return (

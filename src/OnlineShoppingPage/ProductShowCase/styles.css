@@ -13,6 +13,7 @@
   height: 30px;
   border-radius: 6px;
   background-color: white;
+  cursor: pointer;
 }
 .gap {
   margin-right: 10px;

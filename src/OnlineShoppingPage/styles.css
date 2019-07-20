@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   background-color: black;
+  cursor: pointer;
 }
 .cartimage {
   width: 40px;
@@ -57,5 +58,5 @@
   z-index: 10;
   right: 10px;
   top: 16px;
-  background-color: darkmagenta;
+  background-color: orangered;
 }

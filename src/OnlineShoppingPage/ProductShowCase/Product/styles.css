@@ -27,6 +27,7 @@
   color: white;
   border: none;
   background-color: var(--bg);
+  cursor: pointer;
 }
 .each-product:hover {
   --bg: orange;

@@ -7,10 +7,8 @@ class CartModel {
     this.store = store;
     this.id = id;
     this.quantity = quantity;
-    console.log("constructor", store);
   }
   deleteProduct = () => {
-    console.log("deleteProduct", this.store);
     this.store.cartProducts.remove(this);
   };
 }

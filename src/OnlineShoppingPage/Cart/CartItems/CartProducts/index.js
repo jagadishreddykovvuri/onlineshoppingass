@@ -2,20 +2,22 @@ import React, { Component } from "react";
 import { products } from "../../../../constant";
 import "./styles.css";
 import { observer } from "mobx-react";
-import { cartModel } from "../../../../Instance";
 @observer
 class CartProduct extends Component {
   findProductDetails = () => {
     for (let i = 0; i < products.length; i++) {
-      if (products[i].id === this.props.cartItem.id) {
+      if (products[i].id === this.props.id) {
         return i;
       }
     }
   };
   onDeleteProduct = () => {
-    this.props.cartItem.deleteProduct(this.props.cartItem);
+    this.props.cartItem.delete(this.props.id);
   };
   render() {
+    console.log(1);
+    console.log(1);
+    console.log(1);
     let index = this.findProductDetails();
     return (
       <div className="each-cart-item">
@@ -28,7 +30,7 @@ class CartProduct extends Component {
             <p>
               {products[index].availableSizes[0]} | {products[index].style}
             </p>
-            <p>Quatity:{this.props.cartItem.quantity}</p>
+            <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
           </div>
         </div>
         <div className="delete-with-price">
