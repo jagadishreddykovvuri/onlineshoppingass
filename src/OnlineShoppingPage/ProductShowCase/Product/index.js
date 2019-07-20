@@ -8,7 +8,6 @@ class Product extends Component {
     }
   };
   onAddtoCart = () => {
-    console.log(this.props.product.id);
     cartStore.onAddProductToCart(this.props.product.id);
   };
   render() {

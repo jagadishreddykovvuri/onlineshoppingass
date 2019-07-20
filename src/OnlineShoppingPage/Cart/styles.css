@@ -4,9 +4,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(45, 47, 49);
+  background-color: #191919;
+  color: white;
+  font-size: 30px;
 }
 .cart-image-size {
-  width: 130px;
-  height: 130px;
+  width: 80px;
+  height: 80px;
+}
+.headerLabel {
+  display: flex;
+  align-items: center;
+}
+.product-count {
+  width: 13px;
+  height: 13px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 10;
+  bottom: 30px;
+  left: 60px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkmagenta;
+  padding: 4px;
+  font-size: 13px;
 }

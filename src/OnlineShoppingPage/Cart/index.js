@@ -6,7 +6,13 @@ class Cart extends Component {
     return (
       <>
         <div className="cart-header">
-          <img className="cart-image-size" src="/assets/cart.png" />
+          <div className="headerLabel">
+            <div>
+              <img className="cart-image-size" src="/assets/cart.png" />
+              <div className="product-count">1</div>
+            </div>
+            <p>CART</p>
+          </div>
         </div>
         <CartItems />
       </>

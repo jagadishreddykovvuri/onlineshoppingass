@@ -16,6 +16,16 @@ class CartItem extends Component {
     return (
       <>
         <div className="cart-products">{this.cartProducts()}</div>
+        <div className="check-out">
+          <div className="sub-total">
+            <p className="subtotal-size">SUBTOTAL</p>
+            <div>
+              <p className="total-price">${cartStore.subTotal}</p>
+              <p className="total-installments">installments</p>
+            </div>
+          </div>
+          <button className="checkout-button">CHECKOUT</button>
+        </div>
       </>
     );
   }

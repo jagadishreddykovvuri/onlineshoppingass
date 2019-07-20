@@ -32,6 +32,7 @@ class OnlineShoppingPage extends Component {
         <div className="cart">
           <div className="cart-clicker" onClick={this.onOpenCart}>
             <img className="cartimage" src={image} />
+            <div className="product-coun">1</div>
           </div>
           <div className={"cart-page " + open}>
             <Cart />

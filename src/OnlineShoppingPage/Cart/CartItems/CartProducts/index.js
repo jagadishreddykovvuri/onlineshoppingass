@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { products } from "../../../../constant";
 import "./styles.css";
 import { observer } from "mobx-react";
+import { cartModel } from "../../../../Instance";
 @observer
 class CartProduct extends Component {
   findProductDetails = () => {
@@ -10,6 +11,9 @@ class CartProduct extends Component {
         return i;
       }
     }
+  };
+  onDeleteProduct = () => {
+    this.props.cartItem.deleteProduct(this.props.cartItem);
   };
   render() {
     let index = this.findProductDetails();
@@ -22,14 +26,20 @@ class CartProduct extends Component {
           <h2 className="title-color">{products[index].title}</h2>
           <div className="detailstyle">
             <p>
-              {products[index].availableSizes[0]}|{products[index].style}
+              {products[index].availableSizes[0]} | {products[index].style}
             </p>
-            <p>{this.props.cartItem.quantity}</p>
+            <p>Quatity:{this.props.cartItem.quantity}</p>
           </div>
         </div>
         <div className="delete-with-price">
-          <img className="delete-icon" src="/assets/error.png" />
-          <p className="price">price</p>
+          <img
+            onClick={this.onDeleteProduct}
+            className="delete-icon"
+            src="/assets/error.png"
+          />
+          <p className="price">
+            {products[index].currencyFormat + products[index].price}
+          </p>
         </div>
       </div>
     );

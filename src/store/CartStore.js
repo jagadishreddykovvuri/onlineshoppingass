@@ -1,8 +1,9 @@
 import { observable, computed, reaction, action } from "mobx";
 import CartModel from "./Model/CartModel";
+import { products } from "../constant";
 class CartStore {
   @observable cartProducts = [];
-  @action.bound onAddProductToCart(id) {
+  @action.bound onAddProductToCart(id, cost) {
     let flag = true;
     if (this.cartProducts.length === 0) {
       this.cartProducts.push(new CartModel(this, id, 1));
@@ -17,7 +18,23 @@ class CartStore {
         this.cartProducts.push(new CartModel(this, id, 1));
       }
     }
-    console.log(this.cartProducts);
   }
+  @computed get subTotal() {
+    var total = 0;
+
+    if (this.cartProducts.length > 0) {
+      console.log(this.cartProducts[0].id);
+      for (let i = 0; i < this.cartProducts.length; i++) {
+        for (let j = 0; j < products.length; j++) {
+          console.log(products[j].id);
+          if (products[j].id === this.cartProducts[i].id) {
+            total = total + this.cartProducts[i].quantity * products[j].price;
+          }
+        }
+      }
+    }
+    return total.toFixed(2);
+  }
+  @computed get cartItemCount() {}
 }
 export default CartStore;
