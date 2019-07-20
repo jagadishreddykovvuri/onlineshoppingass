@@ -3,30 +3,33 @@ import CartModel from "./Model/CartModel";
 import { products } from "../constant";
 class CartStore {
   @observable cartProducts = [];
-  @action.bound onAddProductToCart(id, cost) {
+  @action.bound onAddProductToCart(id) {
     let flag = true;
-    if (this.cartProducts.length === 0) {
-      this.cartProducts.push(new CartModel(this, id, 1));
-    } else {
-      for (let i = 0; i < this.cartProducts.length; i++) {
-        if (this.cartProducts[i].id === id) {
+    if (this.cartProducts.length > 0) {
+      this.cartProducts.forEach(element => {
+        if (element.id === id) {
           flag = false;
-          this.cartProducts[i].quantity += 1;
+          element.quantity += 1;
         }
-      }
-      if (flag) {
-        this.cartProducts.push(new CartModel(this, id, 1));
-      }
+      });
+    }
+    if (flag) {
+      this.cartProducts.push(new CartModel(this, id, 1));
     }
   }
   @computed get subTotal() {
-    var total = 0;
+    let total = 0;
+    /*
+    let cartids
+    
+    
+    
+    
+    */
 
     if (this.cartProducts.length > 0) {
-      console.log(this.cartProducts[0].id);
       for (let i = 0; i < this.cartProducts.length; i++) {
         for (let j = 0; j < products.length; j++) {
-          console.log(products[j].id);
           if (products[j].id === this.cartProducts[i].id) {
             total = total + this.cartProducts[i].quantity * products[j].price;
           }

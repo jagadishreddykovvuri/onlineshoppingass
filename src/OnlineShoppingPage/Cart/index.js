@@ -3,7 +3,25 @@ import CartItems from "./CartItems";
 import { cartStore } from "../../Instance";
 import "./styles.css";
 class Cart extends Component {
+  showCartItems = () => {
+    let count = cartStore.cartItemCount;
+    if (count > 0) {
+      return <CartItems />;
+    } else {
+      return (
+        <p className="add-products">
+          Add some products in Cart <br /> :)
+        </p>
+      );
+    }
+  };
   render() {
+    let count = cartStore.cartItemCount;
+    if (count > 0) {
+      let cartItems = [<CartItems />];
+    } else {
+      let cartItems = <p>add products</p>;
+    }
     return (
       <>
         <div className="cart-header">
@@ -15,7 +33,7 @@ class Cart extends Component {
             <p>CART</p>
           </div>
         </div>
-        <CartItems />
+        {this.showCartItems()}
       </>
     );
   }
