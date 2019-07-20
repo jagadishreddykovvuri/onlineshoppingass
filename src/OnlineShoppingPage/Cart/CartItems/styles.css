@@ -20,6 +20,7 @@
   background-color: black;
   border: none;
   padding: 6px;
+  cursor: pointer;
 }
 .sub-total {
   width: 100%;
@@ -30,6 +31,7 @@
 }
 .total-installments {
   margin: 30px;
+  font-size: 10px;
 }
 .total-price {
   font-size: 28px;

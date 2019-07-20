@@ -13,15 +13,19 @@ class CartItem extends Component {
     return cart;
   };
   render() {
+    let subTotal = cartStore.subTotal;
     return (
       <>
         <div className="cart-products">{this.cartProducts()}</div>
         <div className="check-out">
           <div className="sub-total">
             <p className="subtotal-size">SUBTOTAL</p>
-            <div>
-              <p className="total-price">${cartStore.subTotal}</p>
-              <p className="total-installments">installments</p>
+            <div className="price-installment">
+              <p className="total-price">${subTotal[0].toFixed(2)}</p>
+              <p className="total-installments">
+                OR UP TO {subTotal[1]} X $
+                {(subTotal[0] / subTotal[1]).toFixed(2)}
+              </p>
             </div>
           </div>
           <button className="checkout-button">CHECKOUT</button>

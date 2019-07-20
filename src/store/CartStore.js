@@ -11,13 +11,14 @@ class CartStore {
     }
   }
   @computed get subTotal() {
-    let total = 0;
+    let total = [0, 0];
     products.forEach(product => {
       if (this.cartProducts.get(product.id)) {
-        total = total + this.cartProducts.get(product.id) * product.price;
+        total[0] = total[0] + this.cartProducts.get(product.id) * product.price;
+        total[1] = total[1] + product.installments;
       }
     });
-    return total.toFixed(2);
+    return total;
   }
   @action.bound deleteProduct(id) {
     this.cartProducts.delete(id);

@@ -4,6 +4,13 @@ import "./styles.css";
 import { observer } from "mobx-react";
 @observer
 class CartProduct extends Component {
+  this;
+  constructor(props) {
+    super(props);
+    this.state = {
+      onFocusDelete: false
+    };
+  }
   findProductDetails = () => {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === this.props.id) {
@@ -14,37 +21,77 @@ class CartProduct extends Component {
   onDeleteProduct = () => {
     this.props.cartItem.delete(this.props.id);
   };
-  render() {
-    console.log(1);
-    console.log(1);
-    console.log(1);
+  onFocusDelete = () => {
+    this.setState({
+      onFocusDelete: !this.state.onFocusDelete
+    });
+  };
+  onHoverDelete = () => {
     let index = this.findProductDetails();
-    return (
-      <div className="each-cart-item">
-        <div>
-          <img className="product-photo" src={products[index].image} />
-        </div>
-        <div className="product-details">
-          <h2 className="title-color">{products[index].title}</h2>
-          <div className="detailstyle">
-            <p>
-              {products[index].availableSizes[0]} | {products[index].style}
+    if (this.state.onFocusDelete) {
+      return (
+        <strike disabled>
+          <div className="each-cart-item">
+            <div>
+              <img className="product-photo" src={products[index].image} />
+            </div>
+            <div className="product-details">
+              <h2 className="title-color">{products[index].title}</h2>
+              <div className="detailstyle">
+                <p>
+                  {products[index].availableSizes[0]} | {products[index].style}
+                </p>
+                <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
+              </div>
+            </div>
+            <div className="delete-with-price">
+              <img
+                onMouseEnter={this.onFocusDelete}
+                onMouseLeave={this.onFocusDelete}
+                onClick={this.onDeleteProduct}
+                className="delete-icon"
+                src="/assets/error.png"
+              />
+              <p className="price">
+                {products[index].currencyFormat + products[index].price}
+              </p>
+            </div>
+          </div>
+        </strike>
+      );
+    } else {
+      return (
+        <div className="each-cart-item">
+          <div>
+            <img className="product-photo" src={products[index].image} />
+          </div>
+          <div className="product-details">
+            <h2 className="title-color">{products[index].title}</h2>
+            <div className="detailstyle">
+              <p>
+                {products[index].availableSizes[0]} | {products[index].style}
+              </p>
+              <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
+            </div>
+          </div>
+          <div className="delete-with-price">
+            <img
+              onMouseEnter={this.onFocusDelete}
+              onMouseLeave={this.onFocusDelete}
+              onClick={this.onDeleteProduct}
+              className="delete-icon"
+              src="/assets/error.png"
+            />
+            <p className="price">
+              {products[index].currencyFormat + products[index].price}
             </p>
-            <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
           </div>
         </div>
-        <div className="delete-with-price">
-          <img
-            onClick={this.onDeleteProduct}
-            className="delete-icon"
-            src="/assets/error.png"
-          />
-          <p className="price">
-            {products[index].currencyFormat + products[index].price}
-          </p>
-        </div>
-      </div>
-    );
+      );
+    }
+  };
+  render() {
+    return <>{this.onHoverDelete()}</>;
   }
 }
 export default CartProduct;
