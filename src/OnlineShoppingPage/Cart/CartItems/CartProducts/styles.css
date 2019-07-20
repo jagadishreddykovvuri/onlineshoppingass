@@ -21,4 +21,16 @@
 }
 .delete-icon {
   width: 13px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.delete-with-price {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: yellow;
+}
+.price {
+  margin-top: 40px;
+  font-size: 20px;
 }
