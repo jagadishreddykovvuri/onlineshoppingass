@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product";
 import orderByPrice from "../../constant";
-import productStore from "../../Instance";
+import productStore from "../../store/Instance";
 import "./styles.css";
 import { observer } from "mobx-react";
 

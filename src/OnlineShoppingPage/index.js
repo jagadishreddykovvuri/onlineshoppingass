@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProductShowCase from "./ProductShowCase";
 import ProductSizeFilter from "./ProductSizeFilter";
-import { cartStore } from "../Instance";
+import { cartStore } from "../store/Instance";
 
 import cart from "./Cart";
 import "./styles.css";

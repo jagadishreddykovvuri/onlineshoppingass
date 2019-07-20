@@ -60,3 +60,6 @@
   top: 16px;
   background-color: orangered;
 }
+.display {
+  display: none;
+}

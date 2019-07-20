@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CartProduct from "./CartProducts";
-import { cartStore } from "../../../Instance";
+import { cartStore } from "../../../store/Instance";
 import "./styles.css";
 import { observer } from "mobx-react";
 @observer

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CartItems from "./CartItems";
-import { cartStore } from "../../Instance";
+import { cartStore } from "../../store/Instance";
 import "./styles.css";
 class Cart extends Component {
   showCartItems = () => {

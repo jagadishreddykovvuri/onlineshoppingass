@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import productStore from "../../../Instance";
+import productStore from "../../../store/Instance";
 import { observer } from "mobx-react";
 @observer
 class RoundButtonFilter extends Component {

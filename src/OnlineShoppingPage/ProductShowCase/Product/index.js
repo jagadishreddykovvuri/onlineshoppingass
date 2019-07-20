@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { cartStore } from "../../../Instance";
+import { cartStore } from "../../../store/Instance";
 import "./styles.css";
 class Product extends Component {
   onFreeShipping = value => {
