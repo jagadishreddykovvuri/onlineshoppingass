@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CartItems from "./CartItems";
+import { cartStore } from "../../Instance";
 import "./styles.css";
 class Cart extends Component {
   render() {
@@ -9,7 +10,7 @@ class Cart extends Component {
           <div className="headerLabel">
             <div>
               <img className="cart-image-size" src="/assets/cart.png" />
-              <div className="product-count">1</div>
+              <div className="product-count">{cartStore.cartItemCount}</div>
             </div>
             <p>CART</p>
           </div>

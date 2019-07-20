@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import ProductShowCase from "./ProductShowCase";
 import ProductSizeFilter from "./ProductSizeFilter";
+import { cartStore } from "../Instance";
+
 import cart from "./Cart";
 import "./styles.css";
 import Cart from "./Cart";
+import { observer } from "mobx-react";
+@observer
 class OnlineShoppingPage extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +36,7 @@ class OnlineShoppingPage extends Component {
         <div className="cart">
           <div className="cart-clicker" onClick={this.onOpenCart}>
             <img className="cartimage" src={image} />
-            <div className="product-coun">1</div>
+            <div className="product-coun">{cartStore.cartItemCount}</div>
           </div>
           <div className={"cart-page " + open}>
             <Cart />

@@ -35,6 +35,12 @@ class CartStore {
     }
     return total.toFixed(2);
   }
-  @computed get cartItemCount() {}
+  @computed get cartItemCount() {
+    let count = 0;
+    this.cartProducts.forEach(element => {
+      count = count + element.quantity;
+    });
+    return count;
+  }
 }
 export default CartStore;
