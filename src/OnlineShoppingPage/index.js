@@ -22,9 +22,11 @@ class OnlineShoppingPage extends Component {
   };
   render() {
     let open = "",
+      countshow = "",
       image = "/assets/cart.png";
     if (this.state.isCartOpen) {
       open = "opener";
+      countshow = "disabler";
       image = "/assets/error.png";
     }
     return (
@@ -35,8 +37,15 @@ class OnlineShoppingPage extends Component {
         </div>
         <div className="cart">
           <div className="cart-clicker" onClick={this.onOpenCart}>
-            <img className="cartimage" src={image} />
-            <div className="product-coun">{cartStore.cartItemCount}</div>
+            <img
+              className="cartimage"
+              src={
+                this.state.isCartOpen ? "/assets/error.png" : "/assets/cart.png"
+              }
+            />
+            <div className={"product-coun " + countshow}>
+              {cartStore.cartItemCount}
+            </div>
           </div>
           <div className={"cart-page " + open}>
             <Cart />

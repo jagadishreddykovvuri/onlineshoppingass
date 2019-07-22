@@ -61,5 +61,7 @@
   background-color: orangered;
 }
 .display {
+}
+.disabler {
   display: none;
 }
