@@ -21,14 +21,6 @@ class OnlineShoppingPage extends Component {
     });
   };
   render() {
-    let open = "",
-      countshow = "",
-      image = "/assets/cart.png";
-    if (this.state.isCartOpen) {
-      open = "opener";
-      countshow = "disabler";
-      image = "/assets/error.png";
-    }
     return (
       <div className="container">
         <div className="shopping-background">
@@ -43,11 +35,18 @@ class OnlineShoppingPage extends Component {
                 this.state.isCartOpen ? "/assets/error.png" : "/assets/cart.png"
               }
             />
-            <div className={"product-coun " + countshow}>
+            <div
+              className={
+                "cart-product-count" +
+                (this.state.isCartOpen ? " disabler" : "")
+              }
+            >
               {cartStore.cartItemCount}
             </div>
           </div>
-          <div className={"cart-page " + open}>
+          <div
+            className={"cart-page " + (this.state.isCartOpen ? "opener" : "")}
+          >
             <Cart />
           </div>
         </div>

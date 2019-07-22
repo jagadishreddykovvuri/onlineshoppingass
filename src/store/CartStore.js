@@ -20,9 +20,6 @@ class CartStore {
     });
     return total;
   }
-  @action.bound deleteProduct(id) {
-    this.cartProducts.delete(id);
-  }
 
   @computed get cartItemCount() {
     let count = 0;

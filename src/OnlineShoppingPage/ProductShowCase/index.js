@@ -8,10 +8,10 @@ import { observer } from "mobx-react";
 @observer
 class ProductShowCase extends Component {
   onChangeOrderbyFilter = e => {
-    productStore.onChangeorderByValue(e.target.value);
+    productStore.onChangeOrderByValue(e.target.value);
   };
   render() {
-    const products = productStore.filteredProducts;
+    const products = productStore.onFilteredProducts;
 
     return (
       <div>

@@ -13,25 +13,24 @@ class ProductStore {
     }
   }
 
-  @action.bound onChangeorderByValue(filter) {
+  @action.bound onChangeOrderByValue(filter) {
     this.orderByValue = filter;
   }
-  @computed get filteredProducts() {
+  @computed get onFilteredProducts() {
     let products = [];
     if (this.sizeFilter.length > 0) {
-      for (let i = 0; i < this.products.length; i++) {
+      this.products.forEach(product => {
         if (
-          this.sizeFilter.filter(size =>
-            this.products[i].availableSizes.includes(size)
-          ).length > 0
+          this.sizeFilter.filter(size => product.availableSizes.includes(size))
+            .length > 0
         ) {
-          products.push(this.products[i]);
+          products.push(product);
         }
-      }
+      });
     } else {
-      for (let i = 0; i < this.products.length; i++) {
-        products.push(this.products[i]);
-      }
+      this.products.forEach(product => {
+        products.push(product);
+      });
     }
 
     if (this.orderByValue === orderByPrice[1]) {
@@ -40,11 +39,9 @@ class ProductStore {
       });
     }
     if (this.orderByValue === orderByPrice[2]) {
-      return products
-        .sort(function(a, b) {
-          return a.price - b.price;
-        })
-        .reverse();
+      return products.sort(function(a, b) {
+        return b.price - a.price;
+      });
     }
     return products;
   }

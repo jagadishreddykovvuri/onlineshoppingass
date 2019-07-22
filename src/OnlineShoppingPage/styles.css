@@ -46,7 +46,7 @@
 .opener {
   width: 600px;
 }
-.product-coun {
+.cart-product-count {
   width: 13px;
   height: 13px;
   padding: 3px;
@@ -59,8 +59,6 @@
   right: 10px;
   top: 16px;
   background-color: orangered;
-}
-.display {
 }
 .disabler {
   display: none;
