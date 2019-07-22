@@ -23,75 +23,48 @@ class CartProduct extends Component {
   };
   onFocusDelete = () => {
     this.setState({
-      onFocusDelete: !this.state.onFocusDelete
+      onFocusDelete: true
     });
   };
-  onHoverDelete = () => {
-    let index = this.findProductDetails();
-    if (this.state.onFocusDelete) {
-      return (
-        <strike disabled>
-          <div className="each-cart-item">
-            <div>
-              <img className="product-photo" src={products[index].image} />
-            </div>
-            <div className="product-details">
-              <h2 className="title-color">{products[index].title}</h2>
-              <div className="detailstyle">
-                <p>
-                  {products[index].availableSizes[0]} | {products[index].style}
-                </p>
-                <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
-              </div>
-            </div>
-            <div className="delete-with-price">
-              <img
-                onMouseEnter={this.onFocusDelete}
-                onMouseLeave={this.onFocusDelete}
-                onClick={this.onDeleteProduct}
-                className="delete-icon"
-                src="/assets/error.png"
-              />
-              <p className="price">
-                {products[index].currencyFormat + products[index].price}
-              </p>
-            </div>
-          </div>
-        </strike>
-      );
-    } else {
-      return (
-        <div className="each-cart-item">
-          <div>
-            <img className="product-photo" src={products[index].image} />
-          </div>
-          <div className="product-details">
-            <h2 className="title-color">{products[index].title}</h2>
-            <div className="detailstyle">
-              <p>
-                {products[index].availableSizes[0]} | {products[index].style}
-              </p>
-              <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
-            </div>
-          </div>
-          <div className="delete-with-price">
-            <img
-              onMouseEnter={this.onFocusDelete}
-              onMouseLeave={this.onFocusDelete}
-              onClick={this.onDeleteProduct}
-              className="delete-icon"
-              src="/assets/error.png"
-            />
-            <p className="price">
-              {products[index].currencyFormat + products[index].price}
-            </p>
-          </div>
-        </div>
-      );
-    }
+  unFocusDelete = () => {
+    this.setState({
+      onFocusDelete: false
+    });
   };
   render() {
-    return <>{this.onHoverDelete()}</>;
+    const index = this.findProductDetails();
+    return (
+      <div
+        className={
+          "each-cart-item " + (this.state.onFocusDelete ? "striker" : "")
+        }
+      >
+        <div>
+          <img className="product-photo" src={products[index].image} />
+        </div>
+        <div className="product-details">
+          <h2 className="title-color">{products[index].title}</h2>
+          <div className="detailstyle">
+            <p>
+              {products[index].availableSizes[0]} | {products[index].style}
+            </p>
+            <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
+          </div>
+        </div>
+        <div className="delete-with-price">
+          <img
+            onMouseEnter={this.onFocusDelete}
+            onMouseLeave={this.unFocusDelete}
+            onClick={this.onDeleteProduct}
+            className="delete-icon"
+            src="/assets/error.png"
+          />
+          <p className="price">
+            {products[index].currencyFormat + products[index].price}
+          </p>
+        </div>
+      </div>
+    );
   }
 }
 export default CartProduct;
