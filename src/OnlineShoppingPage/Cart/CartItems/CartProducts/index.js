@@ -31,7 +31,7 @@ class CartProduct extends Component {
       onFocusDelete: false
     });
   };
-  render() {
+  render(props) {
     const index = this.findProductDetails();
     return (
       <div
