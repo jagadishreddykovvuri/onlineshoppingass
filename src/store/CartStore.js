@@ -1,6 +1,7 @@
 import { observable, computed, reaction, action } from "mobx";
 import CartModel from "./Model/CartModel";
 import { products } from "../constant";
+import productStore from "./Instance";
 class CartStore {
   @observable cartProducts = new Map();
   @action.bound onAddProductToCart(id) {
@@ -12,7 +13,7 @@ class CartStore {
   }
   @computed get subTotal() {
     let total = [0, 0];
-    products.forEach(product => {
+    productStore.products.forEach(product => {
       if (this.cartProducts.get(product.id)) {
         total[0] = total[0] + this.cartProducts.get(product.id) * product.price;
         total[1] = total[1] + product.installments;

@@ -2,15 +2,29 @@ import { observable, computed, reaction, action } from "mobx";
 import orderByPrice from "../constant";
 import { products } from "../constant";
 class ProductStore {
-  products = products;
+  @observable products = [];
+  @observable isLoading = true;
   @observable sizeFilter = [];
   @observable orderByValue;
+  @observable error = null;
   @action.bound onAddorRemoveFilter(filterValue) {
     if (this.sizeFilter.indexOf(filterValue) === -1) {
       this.sizeFilter.push(filterValue);
     } else {
       this.sizeFilter.remove(filterValue);
     }
+  }
+  @action.bound onFetchProductList() {
+    fetch(`https://demo8129378.mockable.io/products/all/v1`)
+      .then(response => response.json())
+      .then(data => {
+        this.products = data.products;
+        this.isLoading = false;
+      })
+      .catch(error => {
+        this.error = error;
+        this.isLoading = false;
+      });
   }
 
   @action.bound onChangeOrderByValue(filter) {

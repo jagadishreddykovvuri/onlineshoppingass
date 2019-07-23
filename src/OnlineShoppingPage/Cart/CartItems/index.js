@@ -7,9 +7,9 @@ import { observer } from "mobx-react";
 class CartItem extends Component {
   cartProducts = () => {
     let cart = [];
-    cartStore.cartProducts.forEach((quantity, id, cartItem) =>
-      cart.push(<CartProduct cartItem={cartStore.cartProducts} id={id} />)
-    );
+    cartStore.cartProducts.forEach((quantity, id, cartItem) => {
+      cart.push(<CartProduct cartItem={cartStore.cartProducts} id={id} />);
+    });
     return cart;
   };
   render() {

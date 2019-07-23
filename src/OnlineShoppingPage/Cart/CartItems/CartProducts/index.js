@@ -23,15 +23,11 @@ class CartProduct extends Component {
   };
   onFocusDelete = () => {
     this.setState({
-      onFocusDelete: true
+      onFocusDelete: !this.state.onFocusDelete
     });
   };
-  unFocusDelete = () => {
-    this.setState({
-      onFocusDelete: false
-    });
-  };
-  render(props) {
+
+  render() {
     const index = this.findProductDetails();
     return (
       <div
@@ -54,7 +50,7 @@ class CartProduct extends Component {
         <div className="delete-with-price">
           <img
             onMouseEnter={this.onFocusDelete}
-            onMouseLeave={this.unFocusDelete}
+            onMouseLeave={this.onFocusDelete}
             onClick={this.onDeleteProduct}
             className="delete-icon"
             src="/assets/error.png"

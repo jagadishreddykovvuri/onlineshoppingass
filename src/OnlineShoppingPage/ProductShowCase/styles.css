@@ -27,3 +27,11 @@
 .products-background {
   width: 3266.13px;
 }
+.loading {
+  width: 1000px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}

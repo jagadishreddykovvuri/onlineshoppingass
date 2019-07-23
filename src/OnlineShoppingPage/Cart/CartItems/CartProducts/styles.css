@@ -36,3 +36,7 @@
   margin-top: 40px;
   font-size: 20px;
 }
+.striker {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

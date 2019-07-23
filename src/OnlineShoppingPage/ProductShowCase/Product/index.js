@@ -8,31 +8,41 @@ class Product extends Component {
     }
   };
   onAddtoCart = () => {
-    cartStore.onAddProductToCart(this.props.product.id);
+    cartStore.onAddProductToCart(this.props.id);
+  };
+  getInstallments = (installment, currencyFormat, price) => {
+    return `or ${installment} x ${currencyFormat}
+    ${Number((price / installment).toFixed(2))}`;
   };
   render() {
-    const { product } = this.props;
+    const {
+      image,
+      isFreeShipping,
+      title,
+      price,
+      currencyFormat,
+      installments
+    } = this.props;
     return (
       <>
         <div className="each-product">
           <div
             className="product-image"
             style={{
-              backgroundImage: "url(" + product.image + ")"
+              backgroundImage: "url(" + image + ")"
             }}
           >
-            {this.onFreeShipping(product.isFreeShipping)}
+            {this.onFreeShipping(isFreeShipping)}
           </div>
           <div className="product-title">
-            <h2 className="price">{product.title}</h2>
+            <h2 className="price">{title}</h2>
           </div>
           <div className="separation" />
           <h4 className="price">
-            {product.currencyFormat} {product.price}
+            {currencyFormat} {price}
           </h4>
           <p className="installment">
-            or {product.installments} x {product.currencyFormat}
-            {Number((product.price / product.installments).toFixed(2))}
+            {this.getInstallments(installments, currencyFormat, price)}
           </p>
           <button className="add-to-cart" onClick={this.onAddtoCart}>
             Add To Cart
