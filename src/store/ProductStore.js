@@ -1,12 +1,11 @@
 import { observable, computed, reaction, action } from "mobx";
 import orderByPrice from "../constant";
-import { products } from "../constant";
+import { loadValues } from "../constant";
 class ProductStore {
   @observable products = [];
-  @observable isLoading = true;
+  @observable isLoading = loadValues.loading;
   @observable sizeFilter = [];
   @observable orderByValue;
-  @observable error = null;
   @action.bound onAddorRemoveFilter(filterValue) {
     if (this.sizeFilter.indexOf(filterValue) === -1) {
       this.sizeFilter.push(filterValue);
@@ -19,11 +18,10 @@ class ProductStore {
       .then(response => response.json())
       .then(data => {
         this.products = data.products;
-        this.isLoading = false;
+        this.isLoading = loadValues.success;
       })
       .catch(error => {
-        this.error = error;
-        this.isLoading = false;
+        this.isLoading = loadValues.failure;
       });
   }
 

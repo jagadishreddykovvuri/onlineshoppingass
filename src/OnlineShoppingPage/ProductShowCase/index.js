@@ -5,6 +5,7 @@ import productStore from "../../store/Instance";
 import "./styles.css";
 import { observer } from "mobx-react";
 import Loader from "./Loader";
+import { loadValues } from "../../constant";
 
 @observer
 class ProductShowCase extends Component {
@@ -12,7 +13,7 @@ class ProductShowCase extends Component {
     productStore.onChangeOrderByValue(e.target.value);
   };
   onLoadingFetch = () => {
-    if (productStore.isLoading) {
+    if (productStore.isLoading === loadValues.loading) {
       return (
         <div className="loading">
           <Loader />
@@ -23,7 +24,7 @@ class ProductShowCase extends Component {
   };
   afterLoadingData = () => {
     const products = productStore.onFilteredProducts;
-    if (!productStore.isLoading && productStore.error === null) {
+    if (productStore.isLoading === loadValues.success) {
       return (
         <>
           <div className="header-filter">
@@ -52,8 +53,8 @@ class ProductShowCase extends Component {
   };
 
   render() {
-    if (productStore.error !== null) {
-      return <h1>TypeError: Failed to fetch</h1>;
+    if (productStore.isLoading === loadValues.failure) {
+      return <h1>INTERNET___DISCONNECTED</h1>;
     } else {
       return (
         <div>

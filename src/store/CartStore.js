@@ -1,6 +1,4 @@
 import { observable, computed, reaction, action } from "mobx";
-import CartModel from "./Model/CartModel";
-import { products } from "../constant";
 import productStore from "./Instance";
 class CartStore {
   @observable cartProducts = new Map();

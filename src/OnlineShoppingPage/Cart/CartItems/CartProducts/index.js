@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { products } from "../../../../constant";
+import productStore from "../../../../store/Instance";
 import "./styles.css";
 import { observer } from "mobx-react";
 @observer
@@ -12,6 +12,7 @@ class CartProduct extends Component {
     };
   }
   findProductDetails = () => {
+    let products = productStore.products;
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === this.props.id) {
         return i;
@@ -29,6 +30,7 @@ class CartProduct extends Component {
 
   render() {
     const index = this.findProductDetails();
+    let products = productStore.products;
     return (
       <div
         className={

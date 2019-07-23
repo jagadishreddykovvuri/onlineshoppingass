@@ -242,4 +242,9 @@ const products = [
       "https://react-shopping-cart-67954.firebaseapp.com/static/media/5619496040738316_1.843a4713.jpg"
   }
 ];
-export { orderByPrice as default, sizeArr, products };
+const loadValues = {
+  loading: "onLoading",
+  success: "onsuccess",
+  failure: "onfailure"
+};
+export { orderByPrice as default, sizeArr, loadValues, products };
