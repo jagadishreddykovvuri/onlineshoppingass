@@ -24,45 +24,39 @@ class OnlineShoppingPage extends Component {
   componentDidMount() {
     productStore.onFetchProductList();
   }
-  onFetchError = () => {};
   render() {
-    if (productStore.error !== null) {
-      return <h1>TypeError: Failed to fetch</h1>;
-    } else {
-      return (
-        <div className="container">
-          <div className="shopping-background">
-            <ProductSizeFilter />
-            <ProductShowCase />
-          </div>
-          <div className="cart">
-            <div className="cart-clicker" onClick={this.onOpenCart}>
-              <img
-                className="cartimage"
-                src={
-                  this.state.isCartOpen
-                    ? "/assets/error.png"
-                    : "/assets/cart.png"
-                }
-              />
-              <div
-                className={
-                  "cart-product-count" +
-                  (this.state.isCartOpen ? " disabler" : "")
-                }
-              >
-                {cartStore.cartItemCount}
-              </div>
-            </div>
+    return (
+      <div className="container">
+        <div className="shopping-background">
+          <ProductSizeFilter />
+          <ProductShowCase />
+        </div>
+        <div className="cart">
+          <div className="cart-clicker" onClick={this.onOpenCart}>
+            <img
+              className="cartimage"
+              src={
+                this.state.isCartOpen ? "/assets/error.png" : "/assets/cart.png"
+              }
+            />
             <div
-              className={"cart-page " + (this.state.isCartOpen ? "opener" : "")}
+              className={
+                "cart-product-count" +
+                (this.state.isCartOpen ? " disabler" : "")
+              }
             >
-              <Cart />
+              {cartStore.cartItemCount}
             </div>
+          </div>
+          <div
+            className={"cart-page " + (this.state.isCartOpen ? "opener" : "")}
+          >
+            <Cart />
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
+
 export default OnlineShoppingPage;

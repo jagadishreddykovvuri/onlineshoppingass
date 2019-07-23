@@ -52,12 +52,16 @@ class ProductShowCase extends Component {
   };
 
   render() {
-    return (
-      <div>
-        {this.onLoadingFetch()}
-        {this.afterLoadingData()}
-      </div>
-    );
+    if (productStore.error !== null) {
+      return <h1>TypeError: Failed to fetch</h1>;
+    } else {
+      return (
+        <div>
+          {this.onLoadingFetch()}
+          {this.afterLoadingData()}
+        </div>
+      );
+    }
   }
 }
 export default ProductShowCase;
