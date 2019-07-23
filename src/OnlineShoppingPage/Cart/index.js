@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CartItems from "./CartItems";
 import { cartStore } from "../../store/Instance";
 import "./styles.css";
+import CartIcon from "./CartIcon";
 class Cart extends Component {
   showCartItems = () => {
     let count = cartStore.cartItemCount;

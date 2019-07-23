@@ -3,6 +3,7 @@ import ProductShowCase from "./ProductShowCase";
 import ProductSizeFilter from "./ProductSizeFilter";
 import { cartStore } from "../store/Instance";
 import productStore from "../store/Instance";
+import CartIcon from "./Cart/CartIcon";
 
 import cart from "./Cart";
 import "./styles.css";
