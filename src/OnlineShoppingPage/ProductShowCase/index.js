@@ -54,7 +54,7 @@ class ProductShowCase extends Component {
 
   render() {
     if (productStore.isLoading === APIstatus.FAILURE) {
-      return <h1>INTERNET___DISCONNECTED</h1>;
+      return <h1>SOMETHING WENT WRONG</h1>;
     } else {
       return (
         <div>

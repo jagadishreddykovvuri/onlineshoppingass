@@ -2,7 +2,7 @@ import { observable, computed, reaction, action } from "mobx";
 import orderByPrice from "../constant";
 import { APIstatus } from "../constant";
 class ProductStore {
-  @observable products = [];
+  products = [];
   @observable isLoading = APIstatus.LOADING;
   @observable sizeFilter = [];
   @observable orderByValue;
@@ -14,7 +14,7 @@ class ProductStore {
     }
   }
   @action.bound onFetchProductList() {
-    fetch(`https://demo8129378.mockable.io/products/all/v1`)
+    fetch(`https://demo8129378.mockable.io/products/all/v1sd`)
       .then(response => response.json())
       .then(data => {
         this.products = data.products;
@@ -30,6 +30,7 @@ class ProductStore {
   }
   @computed get onFilteredProducts() {
     let products = [];
+    console.log(this.isLoading);
     if (this.sizeFilter.length > 0) {
       this.products.forEach(product => {
         if (
