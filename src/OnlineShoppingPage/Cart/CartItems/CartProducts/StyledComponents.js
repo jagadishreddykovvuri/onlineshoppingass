@@ -10,7 +10,7 @@ export const EachCartItem = styled.div`
       opacity: 0.5;
     `}
 `;
-export const ProductPhoto = styled.div`
+export const ProductPhoto = styled.img`
   width: 100px;
   height: 130px;
   margin: 6px;
@@ -32,7 +32,7 @@ export const DeleteAndPrice = styled.div`
   flex-direction: column;
   color: yellow;
 `;
-export const DeleteIcon = styled.div`
+export const DeleteIcon = styled.img`
   width: 13px;
   margin-top: 20px;
   margin-left: 20px;
