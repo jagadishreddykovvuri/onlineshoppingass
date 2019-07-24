@@ -7,6 +7,8 @@ export const CartClicker = styled.div`
   justify-content: center;
   background-color: black;
   cursor: pointer;
+  border-top-left-radius: 40px 40px;
+  border-bottom-left-radius: 40px 40px;
 `;
 export const CartImage = styled.img`
   width: 40px;

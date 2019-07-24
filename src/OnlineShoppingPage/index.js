@@ -44,13 +44,11 @@ class OnlineShoppingPage extends Component {
                 this.state.isCartOpen ? "/assets/error.png" : "/assets/cart.png"
               }
             />
-            <CartProductCount
-              disabler={this.state.isCartOpen ? " disabler" : ""}
-            >
+            <CartProductCount disabler={this.state.isCartOpen}>
               {cartStore.cartItemCount}
             </CartProductCount>
           </CartClicker>
-          <CartPage opener={this.state.isCartOpen ? "opener" : ""}>
+          <CartPage opener={this.state.isCartOpen}>
             <Cart />
           </CartPage>
         </CartDiv>
