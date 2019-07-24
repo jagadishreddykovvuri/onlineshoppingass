@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import { cartStore } from "../../../store/Instance";
-import "./styles.css";
+import {
+  ProductTitle,
+  Separation,
+  AddToCart,
+  Installments,
+  Price,
+  Title,
+  EachProduct,
+  ProductImage,
+  FreeShipping
+} from "./StyledComponents";
 class Product extends Component {
   onFreeShipping = value => {
     if (value) {
-      return <div class="free-shipping">Free Shipping</div>;
+      return <FreeShipping>Free Shipping</FreeShipping>;
     }
   };
   onAddtoCart = () => {
@@ -25,29 +35,26 @@ class Product extends Component {
     } = this.props;
     return (
       <>
-        <div className="each-product">
-          <div
-            className="product-image"
+        <EachProduct>
+          <ProductImage
             style={{
               backgroundImage: "url(" + image + ")"
             }}
           >
             {this.onFreeShipping(isFreeShipping)}
-          </div>
-          <div className="product-title">
-            <h2 className="price">{title}</h2>
-          </div>
-          <div className="separation" />
-          <h4 className="price">
+          </ProductImage>
+          <ProductTitle>
+            <Title>{title}</Title>
+          </ProductTitle>
+          <Separation />
+          <Price>
             {currencyFormat} {price}
-          </h4>
-          <p className="installment">
+          </Price>
+          <Installments>
             {this.getInstallments(installments, currencyFormat, price)}
-          </p>
-          <button className="add-to-cart" onClick={this.onAddtoCart}>
-            Add To Cart
-          </button>
-        </div>
+          </Installments>
+          <AddToCart onClick={this.onAddtoCart}>Add To Cart</AddToCart>
+        </EachProduct>
       </>
     );
   }

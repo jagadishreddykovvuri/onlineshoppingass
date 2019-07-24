@@ -3,9 +3,14 @@ import ProductShowCase from "./ProductShowCase";
 import ProductSizeFilter from "./ProductSizeFilter";
 import { cartStore } from "../store/Instance";
 import productStore from "../store/Instance";
-import CartIcon from "./Cart/CartIcon";
-
-import cart from "./Cart";
+import {
+  CartClicker,
+  CartImage,
+  CartProductCount,
+  CartPage,
+  CartDiv,
+  ShoppingPanel
+} from "./StyledComponents";
 import "./styles.css";
 import Cart from "./Cart";
 import { observer } from "mobx-react";
@@ -27,34 +32,28 @@ class OnlineShoppingPage extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <div className="shopping-background">
+      <div>
+        <ShoppingPanel>
           <ProductSizeFilter />
           <ProductShowCase />
-        </div>
-        <div className="cart">
-          <div className="cart-clicker" onClick={this.onOpenCart}>
-            <img
-              className="cartimage"
+        </ShoppingPanel>
+        <CartDiv>
+          <CartClicker onClick={this.onOpenCart}>
+            <CartImage
               src={
                 this.state.isCartOpen ? "/assets/error.png" : "/assets/cart.png"
               }
             />
-            <div
-              className={
-                "cart-product-count" +
-                (this.state.isCartOpen ? " disabler" : "")
-              }
+            <CartProductCount
+              disabler={this.state.isCartOpen ? " disabler" : ""}
             >
               {cartStore.cartItemCount}
-            </div>
-          </div>
-          <div
-            className={"cart-page " + (this.state.isCartOpen ? "opener" : "")}
-          >
+            </CartProductCount>
+          </CartClicker>
+          <CartPage opener={this.state.isCartOpen ? "opener" : ""}>
             <Cart />
-          </div>
-        </div>
+          </CartPage>
+        </CartDiv>
       </div>
     );
   }

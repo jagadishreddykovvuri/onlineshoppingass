@@ -2,10 +2,16 @@ import React, { Component } from "react";
 import Product from "./Product";
 import orderByPrice from "../../constant";
 import productStore from "../../store/Instance";
-import "./styles.css";
 import { observer } from "mobx-react";
 import Loader from "./Loader";
 import { APIstatus } from "../../constant";
+import {
+  ProductShow,
+  OrderByFIlter,
+  OrderBy,
+  ProductCount,
+  Loading
+} from "./StyledComponents";
 
 @observer
 class ProductShowCase extends Component {
@@ -15,10 +21,10 @@ class ProductShowCase extends Component {
   onLoadingFetch = () => {
     if (productStore.isLoading === APIstatus.LOADING) {
       return (
-        <div className="loading">
+        <Loading>
           <Loader />
           Loading.......
-        </div>
+        </Loading>
       );
     }
   };
@@ -27,26 +33,23 @@ class ProductShowCase extends Component {
     if (productStore.isLoading === APIstatus.SUCCESS) {
       return (
         <>
-          <div className="header-filter">
+          <ProductCount>
             <h3>{products.length} Product(s) found</h3>
-            <div className="orderby">
-              <h3 className="gap">Order by: </h3>
-              <select
-                className="order-by-filter"
-                onClick={this.onChangeOrderbyFilter}
-              >
+            <OrderBy>
+              <h3>Order by: </h3>
+              <OrderByFIlter onClick={this.onChangeOrderbyFilter}>
                 {orderByPrice.map(option => (
                   <option value={option}>{option}</option>
                 ))}
-              </select>
-            </div>
-          </div>
+              </OrderByFIlter>
+            </OrderBy>
+          </ProductCount>
 
-          <div className="product-show">
+          <ProductShow>
             {products.map(product => (
               <Product {...product} />
             ))}
-          </div>
+          </ProductShow>
         </>
       );
     }

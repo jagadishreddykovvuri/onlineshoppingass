@@ -14,7 +14,7 @@ class ProductStore {
     }
   }
   @action.bound onFetchProductList() {
-    fetch(`https://demo8129378.mockable.io/products/all/v1sd`)
+    fetch(`https://demo8129378.mockable.io/products/all/v1`)
       .then(response => response.json())
       .then(data => {
         this.products = data.products;

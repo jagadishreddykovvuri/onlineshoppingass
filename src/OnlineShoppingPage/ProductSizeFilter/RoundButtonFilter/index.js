@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./styles.css";
 import productStore from "../../../store/Instance";
 import { observer } from "mobx-react";
+import { RoundSize } from "./StyledComponents";
 @observer
 class RoundButtonFilter extends Component {
   HandleClick = () => {
@@ -10,23 +10,15 @@ class RoundButtonFilter extends Component {
   onSelectedorNot = () => {
     if (productStore.sizeFilter.indexOf(this.props.size) !== -1) {
       return (
-        <div
-          className="round clicked"
-          value={this.props.size}
-          onClick={this.HandleClick}
-        >
+        <RoundSize value={this.props.size} onClick={this.HandleClick} clicked>
           {this.props.size}
-        </div>
+        </RoundSize>
       );
     } else {
       return (
-        <div
-          className="round"
-          value={this.props.size}
-          onClick={this.HandleClick}
-        >
+        <RoundSize value={this.props.size} onClick={this.HandleClick}>
           {this.props.size}
-        </div>
+        </RoundSize>
       );
     }
   };

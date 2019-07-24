@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import CartItems from "./CartItems";
 import { cartStore } from "../../store/Instance";
-import "./styles.css";
-import CartIcon from "./CartIcon";
+import {
+  CartHeader,
+  CartImage,
+  HeaderLabel,
+  ProductCount,
+  AddProducts
+} from "./StyledComponents";
+
 class Cart extends Component {
   showCartItems = () => {
     let count = cartStore.cartItemCount;
@@ -10,9 +16,9 @@ class Cart extends Component {
       return <CartItems />;
     } else {
       return (
-        <p className="add-products">
+        <AddProducts>
           Add some products in Cart <br /> :)
-        </p>
+        </AddProducts>
       );
     }
   };
@@ -25,15 +31,15 @@ class Cart extends Component {
     }
     return (
       <>
-        <div className="cart-header">
-          <div className="headerLabel">
+        <CartHeader>
+          <HeaderLabel>
             <div>
-              <img className="cart-image-size" src="/assets/cart.png" />
-              <div className="product-count">{cartStore.cartItemCount}</div>
+              <CartImage src="/assets/cart.png" />
+              <ProductCount>{cartStore.cartItemCount}</ProductCount>
             </div>
             <p>CART</p>
-          </div>
-        </div>
+          </HeaderLabel>
+        </CartHeader>
         {this.showCartItems()}
       </>
     );

@@ -1,4 +1,5 @@
-.cart-header {
+import styled, { css } from "styled-components";
+export const CartHeader = styled.div`
   width: 100%;
   height: 200px;
   display: flex;
@@ -7,16 +8,16 @@
   background-color: #191919;
   color: white;
   font-size: 30px;
-}
-.cart-image-size {
-  width: 80px;
-  height: 80px;
-}
-.headerLabel {
+`;
+export const HeaderLabel = styled.div`
   display: flex;
   align-items: center;
-}
-.product-count {
+`;
+export const CartImage = styled.img`
+  width: 80px;
+  height: 80px;
+`;
+export const ProductCount = styled.div`
   width: 13px;
   height: 13px;
   border-radius: 10px;
@@ -31,8 +32,8 @@
   background-color: orangered;
   padding: 4px;
   font-size: 13px;
-}
-.add-products {
+`;
+export const AddProducts = styled.p`
   font-size: 30px;
   text-align: center;
-}
+`;

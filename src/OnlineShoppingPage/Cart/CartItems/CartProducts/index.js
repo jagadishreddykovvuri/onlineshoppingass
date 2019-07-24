@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import productStore from "../../../../store/Instance";
-import "./styles.css";
 import { observer } from "mobx-react";
+import {
+  EachCartItem,
+  ProductPhoto,
+  ProductDetails,
+  TitleColor,
+  DetailStyle,
+  DeleteAndPrice,
+  DeleteIcon,
+  Price
+} from "./StyledComponents";
 @observer
 class CartProduct extends Component {
   this;
@@ -32,36 +41,31 @@ class CartProduct extends Component {
     const index = this.findProductDetails();
     let products = productStore.products;
     return (
-      <div
-        className={
-          "each-cart-item " + (this.state.onFocusDelete ? "striker" : "")
-        }
-      >
+      <EachCartItem striker={this.state.onFocusDelete ? "striker" : ""}>
         <div>
-          <img className="product-photo" src={products[index].image} />
+          <ProductPhoto src={products[index].image} />
         </div>
-        <div className="product-details">
-          <h2 className="title-color">{products[index].title}</h2>
-          <div className="detailstyle">
+        <ProductDetails>
+          <TitleColor>{products[index].title}</TitleColor>
+          <DetailStyle>
             <p>
               {products[index].availableSizes[0]} | {products[index].style}
             </p>
             <p>Quatity:{this.props.cartItem.get(this.props.id)}</p>
-          </div>
-        </div>
-        <div className="delete-with-price">
-          <img
+          </DetailStyle>
+        </ProductDetails>
+        <DeleteAndPrice>
+          <DeleteIcon
             onMouseEnter={this.onFocusDelete}
             onMouseLeave={this.onFocusDelete}
             onClick={this.onDeleteProduct}
-            className="delete-icon"
             src="/assets/error.png"
           />
-          <p className="price">
+          <Price>
             {products[index].currencyFormat + products[index].price}
-          </p>
-        </div>
-      </div>
+          </Price>
+        </DeleteAndPrice>
+      </EachCartItem>
     );
   }
 }

@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import RoundButtonFilter from "./RoundButtonFilter";
 import { sizeArr } from "../../constant";
-import "./styles.css";
+import { SizeFilters, Filterdiv } from "./StyledComponents";
 class ProductSizeFilter extends Component {
   render() {
     return (
-      <div className="filterSide">
+      <Filterdiv>
         <h1>Sizes:</h1>
-        <div className="sizeFilter">
+        <SizeFilters>
           {sizeArr.map(size => {
             return <RoundButtonFilter size={size} />;
           })}
-        </div>
-      </div>
+        </SizeFilters>
+      </Filterdiv>
     );
   }
 }
