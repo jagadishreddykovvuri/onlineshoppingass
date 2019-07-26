@@ -41,7 +41,7 @@ class CartProduct extends Component {
     const index = this.findProductDetails();
     let products = productStore.products;
     return (
-      <EachCartItem striker={this.state.onFocusDelete ? "striker" : ""}>
+      <EachCartItem striker={this.state.onFocusDelete ? true : false}>
         <div>
           <ProductPhoto src={products[index].image} />
         </div>

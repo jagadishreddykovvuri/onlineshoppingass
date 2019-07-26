@@ -1,6 +1,7 @@
 import { observable, computed, reaction, action } from "mobx";
 import orderByPrice from "../constant";
 import { APIstatus } from "../constant";
+import * as Cookies from "js-cookie";
 class ProductStore {
   products = [];
   @observable isLoading = APIstatus.LOADING;
@@ -14,6 +15,12 @@ class ProductStore {
     }
   }
   @action.bound onFetchProductList() {
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: Cookies.get("myuser")
+      }
+    };
     fetch(`https://demo8129378.mockable.io/products/all/v1`)
       .then(response => response.json())
       .then(data => {

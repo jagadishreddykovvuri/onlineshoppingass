@@ -3,6 +3,7 @@ import ProductShowCase from "./ProductShowCase";
 import ProductSizeFilter from "./ProductSizeFilter";
 import { cartStore } from "../store/Instance";
 import productStore from "../store/Instance";
+import * as Cookies from "js-cookie";
 import {
   CartClicker,
   CartImage,
@@ -30,9 +31,14 @@ class OnlineShoppingPage extends Component {
   componentDidMount() {
     productStore.onFetchProductList();
   }
+  onSignout = () => {
+    Cookies.remove("myuser");
+    this.props.history.push("/");
+  };
   render() {
     return (
       <div>
+        <button onClick={this.onSignout}>signout</button>
         <ShoppingPanel>
           <ProductSizeFilter />
           <ProductShowCase />

@@ -28,6 +28,7 @@ export const Price = styled.h4`
 `;
 export const Title = styled.h2`
   text-align: center;
+  user-select: none;
 `;
 export const FreeShipping = styled.div`
   width: 75px;
