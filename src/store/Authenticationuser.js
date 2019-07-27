@@ -1,5 +1,6 @@
 import { observable } from "mobx";
 import { action } from "mobx";
+import onFetchapiCall from "./Authapicall";
 
 class Authenticationuser {
   @observable userName = "";
@@ -11,21 +12,6 @@ class Authenticationuser {
   @action.bound onChangePassword(value) {
     this.password = value;
   }
-  onFetchapiCall = (server, details) => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify(details),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-    return fetch(server, options)
-      .then(res => res.json())
-      .then(res => {
-        this.isFetching = false;
-        return res;
-      });
-  };
 
   onSignupUser = () => {
     if (this.userName !== "" && this.password !== "") {
@@ -38,10 +24,13 @@ class Authenticationuser {
       this.userName = "";
       this.password = "";
 
-      return this.onFetchapiCall(
+      return onFetchapiCall(
         "https://user-shopping-cart.getsandbox.com/sign_up/v1/",
         userDetails
-      );
+      ).then(res => {
+        this.isFetching = false;
+        return res;
+      });
     }
   };
   onLoginUser = () => {
@@ -53,10 +42,13 @@ class Authenticationuser {
       };
       this.userName = "";
       this.password = "";
-      return this.onFetchapiCall(
+      return onFetchapiCall(
         "https://user-shopping-cart.getsandbox.com/login/v1/",
         userDetails
-      );
+      ).then(res => {
+        this.isFetching = false;
+        return res;
+      });
     }
   };
 }
