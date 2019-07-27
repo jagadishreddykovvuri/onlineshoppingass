@@ -38,7 +38,7 @@ class Authenticationuser {
       this.userName = "";
       this.password = "";
 
-      this.onFetchapiCall(
+      return this.onFetchapiCall(
         "https://user-shopping-cart.getsandbox.com/sign_up/v1/",
         userDetails
       );
@@ -53,7 +53,7 @@ class Authenticationuser {
       };
       this.userName = "";
       this.password = "";
-      this.onFetchapiCall(
+      return this.onFetchapiCall(
         "https://user-shopping-cart.getsandbox.com/login/v1/",
         userDetails
       );
