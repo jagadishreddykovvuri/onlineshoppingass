@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { Div, Input, Button } from "../StyledComponent";
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { Div, Input, Button, Loaddiv, P } from "../StyledComponent";
 import { authenticationuser } from "../../store/Instance";
 import { observer } from "mobx-react";
+import Loader from "../../OnlineShoppingPage/ProductShowCase/Loader";
+
 @observer
 class Signup extends Component {
+  state = {
+    onerror: ""
+  };
   onChangeUsername = event => {
     authenticationuser.onChangeUserName(event.target.value);
   };
@@ -18,7 +16,23 @@ class Signup extends Component {
     authenticationuser.onChangePassword(event.target.value);
   };
   onSignup = () => {
-    authenticationuser.onSignupUser();
+    authenticationuser.onSignupUser().then(data => {
+      data.status
+        ? this.setState({
+            onerror: true
+          })
+        : this.setState({
+            onerror: false
+          });
+    });
+  };
+  onLogin = () => {
+    this.props.history.push("/");
+  };
+  onFocususername = () => {
+    this.setState({
+      onerror: ""
+    });
   };
   render() {
     return (
@@ -31,6 +45,7 @@ class Signup extends Component {
               type="text"
               placeholder="Username"
               onChange={this.onChangeUsername}
+              onFocus={this.onFocususername}
             />
             <Input
               value={authenticationuser.password}
@@ -40,13 +55,15 @@ class Signup extends Component {
               placeholder="Password"
               onChange={this.onChangePassword}
             />
-            <Link to={"/signup"}>
-              <Button onClick={this.onSignup}>Signup</Button>
-            </Link>
+            {this.state.onerror === false && <P failure>already user Exit</P>}
+            {this.state.onerror === true && (
+              <P success>Registration successfull</P>
+            )}
+            <Button onClick={this.onSignup}>Signup</Button>
             <p>Or</p>
-            <Link to={"/"}>
-              <Button>Login</Button>
-            </Link>
+            <Button onClick={this.onLogin}>Login</Button>
+
+            {authenticationuser.isFetching && <Loaddiv />}
           </Div>
         </Div>
       </>

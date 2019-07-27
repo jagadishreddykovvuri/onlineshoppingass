@@ -35,3 +35,45 @@ export const Button = styled.button`
   margin: 5px;
   box-shadow: 2px 2px 2px 2px #ccc;
 `;
+export const Loaddiv = styled.div`
+  position: fixed;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid black;
+  width: 20px;
+  height: 20px;
+  right: 1000px;
+  top: 512px;
+  -webkit-animation: spin 0.5s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+export const P = styled.p`
+  font-size: 10px;
+  ${props =>
+    props.success &&
+    css`
+      color: green;
+    `}
+  ${props =>
+    props.failure &&
+    css`
+      color: red;
+    `}
+`;

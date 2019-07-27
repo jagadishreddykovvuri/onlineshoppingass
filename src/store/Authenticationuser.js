@@ -4,64 +4,59 @@ import { action } from "mobx";
 class Authenticationuser {
   @observable userName = "";
   @observable password = "";
-  apiStatus;
+  @observable isFetching = false;
   @action.bound onChangeUserName(value) {
     this.userName = value;
   }
   @action.bound onChangePassword(value) {
     this.password = value;
   }
+  onFetchapiCall = (server, details) => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(details),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    return fetch(server, options)
+      .then(res => res.json())
+      .then(res => {
+        this.isFetching = false;
+        return res;
+      });
+  };
 
   onSignupUser = () => {
     if (this.userName !== "" && this.password !== "") {
+      this.isFetching = true;
       const userDetails = {
         username: this.userName,
         password: this.password
       };
 
-      const options = {
-        method: "POST",
-        body: JSON.stringify(userDetails),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
-
-      fetch("https://user-shopping-cart.getsandbox.com/sign_up/v1/", options)
-        .then(res => res.json())
-        .then(res => {
-          res.status
-            ? alert("registration successfull")
-            : alert("user already exits");
-        });
       this.userName = "";
       this.password = "";
+
+      this.onFetchapiCall(
+        "https://user-shopping-cart.getsandbox.com/sign_up/v1/",
+        userDetails
+      );
     }
   };
   onLoginUser = () => {
-    console.log(this.userName, this.password);
     if (this.userName !== "" && this.password !== "") {
+      this.isFetching = true;
       const userDetails = {
         username: this.userName,
         password: this.password
       };
-      const options = {
-        method: "POST",
-        body: JSON.stringify(userDetails),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
       this.userName = "";
       this.password = "";
-      return fetch(
+      this.onFetchapiCall(
         "https://user-shopping-cart.getsandbox.com/login/v1/",
-        options
-      )
-        .then(res => res.json())
-        .then(res => {
-          return res;
-        });
+        userDetails
+      );
     }
   };
 }

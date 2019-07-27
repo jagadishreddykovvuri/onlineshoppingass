@@ -17,11 +17,14 @@ class ProductStore {
   @action.bound onFetchProductList() {
     const options = {
       method: "POST",
+      body: JSON.stringify({}),
       headers: {
-        Authorization: Cookies.get("myuser")
+        Authorization: Cookies.get("myuser"),
+        "Content-Type": "application/json"
       }
     };
-    fetch(`https://demo8129378.mockable.io/products/all/v1`)
+    // TODO::authorization access
+    fetch(`https://user-shopping-cart.getsandbox.com/products/v1/`, options)
       .then(response => response.json())
       .then(data => {
         this.products = data.products;

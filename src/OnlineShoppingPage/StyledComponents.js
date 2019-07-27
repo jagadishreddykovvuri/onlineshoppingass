@@ -61,3 +61,12 @@ export const ShoppingPanel = styled.div`
   margin-top: 60px;
   position: absolute;
 `;
+export const Button = styled.button`
+  width: 60px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border: none;
+  position: absolute;
+  right: 80px;
+`;

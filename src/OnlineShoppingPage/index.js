@@ -10,7 +10,8 @@ import {
   CartProductCount,
   CartPage,
   CartDiv,
-  ShoppingPanel
+  ShoppingPanel,
+  Button
 } from "./StyledComponents";
 import "./styles.css";
 import Cart from "./Cart";
@@ -38,7 +39,7 @@ class OnlineShoppingPage extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.onSignout}>signout</button>
+        <Button onClick={this.onSignout}>signout</Button>
         <ShoppingPanel>
           <ProductSizeFilter />
           <ProductShowCase />

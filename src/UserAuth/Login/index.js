@@ -1,27 +1,29 @@
 import React, { Component } from "react";
-import { Div, Input, Button } from "../StyledComponent";
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { Div, Input, Button, Loaddiv, P } from "../StyledComponent";
+import { Link } from "react-router-dom";
 import { authenticationuser } from "../../store/Instance";
 import OnlineShoppingPage from "../../OnlineShoppingPage";
 import { observer } from "mobx-react";
 import { fakeAuth } from "../../App";
 import * as Cookies from "js-cookie";
+import Loader from "../../OnlineShoppingPage/ProductShowCase/Loader";
 
 @observer
 class Login extends Component {
+  state = {
+    onerror: ""
+  };
   onChangeUsername = event => {
     authenticationuser.onChangeUserName(event.target.value);
   };
   onChangePassword = event => {
     authenticationuser.onChangePassword(event.target.value);
   };
+
   onLogin = () => {
+    this.setState({
+      isFetching: true
+    });
     if (
       authenticationuser.password !== "" &&
       authenticationuser.userName !== ""
@@ -31,10 +33,25 @@ class Login extends Component {
           Cookies.set("myuser", data.accessToken);
           this.props.history.push("/home");
         }
-        data.error ? alert("invalid") : console.log();
+        data.error
+          ? this.setState({
+              onerror: true
+            })
+          : this.setState({
+              onerror: false
+            });
       });
     }
   };
+  onSignup = () => {
+    this.props.history.push("/signup");
+  };
+  onFocususername = () => {
+    this.setState({
+      onerror: ""
+    });
+  };
+
   render() {
     return (
       <>
@@ -46,6 +63,7 @@ class Login extends Component {
               type="text"
               placeholder="Username"
               onChange={this.onChangeUsername}
+              onFocus={this.onFocususername}
             />
             <Input
               value={authenticationuser.password}
@@ -55,13 +73,13 @@ class Login extends Component {
               placeholder="Password"
               onChange={this.onChangePassword}
             />
-            <Link to={"/"}>
-              <Button onClick={this.onLogin}>Login</Button>
-            </Link>
+            {this.state.onerror && <P failure>Invalid credentials</P>}
+
+            <Button onClick={this.onLogin}>Login</Button>
             <p>Or</p>
-            <Link to={"/signup"}>
-              <Button>Signup</Button>
-            </Link>
+            <Button onClick={this.onSignup}>Signup</Button>
+
+            {authenticationuser.isFetching && <Loaddiv />}
           </Div>
         </Div>
       </>
