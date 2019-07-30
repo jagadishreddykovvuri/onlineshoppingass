@@ -39,7 +39,7 @@ class ProductShowCase extends Component {
               <h3>Order by: </h3>
               <OrderByFIlter onClick={this.onChangeOrderbyFilter}>
                 {orderByPrice.map(option => (
-                  <option value={option}>{option}</option>
+                  <option key={option} value={option}>{option}</option>
                 ))}
               </OrderByFIlter>
             </OrderBy>
@@ -47,7 +47,7 @@ class ProductShowCase extends Component {
 
           <ProductShow>
             {products.map(product => (
-              <Product {...product} />
+              <Product key={product.id} {...product} />
             ))}
           </ProductShow>
         </>

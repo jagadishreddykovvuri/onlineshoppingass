@@ -18,11 +18,11 @@ class Product extends Component {
     }
   };
   onAddtoCart = () => {
+
     cartStore.onAddProductToCart(this.props.id);
   };
   getInstallments = (installment, currencyFormat, price) => {
-    return `or ${installment} x ${currencyFormat}
-    ${Number((price / installment).toFixed(2))}`;
+    return `or ${installment} x ${currencyFormat}${Number((price / installment).toFixed(2))}`;
   };
   render() {
     const {
