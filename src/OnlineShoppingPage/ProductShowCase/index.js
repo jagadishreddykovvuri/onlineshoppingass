@@ -5,6 +5,7 @@ import productStore from "../../store/Instance";
 import { observer } from "mobx-react";
 import Loader from "./Loader";
 import { APIstatus } from "../../constant";
+import { cartStore } from "../../store/Instance";
 import {
   ProductShow,
   OrderByFIlter,
@@ -28,6 +29,7 @@ class ProductShowCase extends Component {
       );
     }
   };
+  componentDidMount() {}
   afterLoadingData = () => {
     const products = productStore.onFilteredProducts;
     if (productStore.isLoading === APIstatus.SUCCESS) {
@@ -39,7 +41,9 @@ class ProductShowCase extends Component {
               <h3>Order by: </h3>
               <OrderByFIlter onClick={this.onChangeOrderbyFilter}>
                 {orderByPrice.map(option => (
-                  <option key={option} value={option}>{option}</option>
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
                 ))}
               </OrderByFIlter>
             </OrderBy>

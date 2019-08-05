@@ -25,7 +25,7 @@ class Authenticationuser {
       this.password = "";
 
       return onFetchapiCall(
-        "https://user-shopping-cart.getsandbox.com/sign_up/v1/",
+        "https://products-cart.getsandbox.com/sign_up/v1/",
         userDetails
       ).then(res => {
         this.isFetching = false;
@@ -43,7 +43,7 @@ class Authenticationuser {
       this.userName = "";
       this.password = "";
       return onFetchapiCall(
-        "https://user-shopping-cart.getsandbox.com/login/v1/",
+        "https://products-cart.getsandbox.com/login/v1/",
         userDetails
       ).then(res => {
         this.isFetching = false;

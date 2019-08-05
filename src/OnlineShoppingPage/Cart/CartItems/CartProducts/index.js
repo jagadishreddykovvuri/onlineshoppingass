@@ -11,6 +11,7 @@ import {
   DeleteIcon,
   Price
 } from "./StyledComponents";
+import { cartStore } from "../../../../store/Instance";
 @observer
 class CartProduct extends Component {
   this;
@@ -30,6 +31,7 @@ class CartProduct extends Component {
   };
   onDeleteProduct = () => {
     this.props.cartItem.delete(this.props.id);
+    cartStore.setCartProducts();
   };
   onFocusDelete = () => {
     this.setState({

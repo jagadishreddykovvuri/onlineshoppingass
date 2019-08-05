@@ -16,7 +16,9 @@ class CartItem extends Component {
   cartProducts = () => {
     let cart = [];
     cartStore.cartProducts.forEach((quantity, id, cartItem) => {
-      cart.push(<CartProduct key={id} cartItem={cartStore.cartProducts} id={id} />);
+      cart.push(
+        <CartProduct key={id} cartItem={cartStore.cartProducts} id={id} />
+      );
     });
     return cart;
   };

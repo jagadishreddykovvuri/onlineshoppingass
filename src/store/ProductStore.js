@@ -2,6 +2,7 @@ import { observable, computed, reaction, action } from "mobx";
 import orderByPrice from "../constant";
 import { APIstatus } from "../constant";
 import * as Cookies from "js-cookie";
+import { cartStore } from "./Instance";
 class ProductStore {
   products = [];
   @observable isLoading = APIstatus.LOADING;
@@ -24,11 +25,12 @@ class ProductStore {
       }
     };
     // TODO::authorization access
-    fetch(`https://user-shopping-cart.getsandbox.com/products/v1/`, options)
+    return fetch(`https://products-cart.getsandbox.com/products/v1/`, options)
       .then(response => response.json())
       .then(data => {
         this.products = data.products;
         this.isLoading = APIstatus.SUCCESS;
+        cartStore.onGetCartItems();
       })
       .catch(error => {
         this.isLoading = APIstatus.FAILURE;

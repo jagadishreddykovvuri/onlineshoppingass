@@ -16,6 +16,7 @@ import {
 import "./styles.css";
 import Cart from "./Cart";
 import { observer } from "mobx-react";
+
 @observer
 class OnlineShoppingPage extends Component {
   constructor(props) {

@@ -17,5 +17,6 @@ describe('roundSizefilter', () => {
         const sizefilter=getByText('S')
         fireEvent.click(sizefilter)
         expect(productStore.sizeFilter).not.toContain('S');
+
       })
   })
